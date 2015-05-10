@@ -51,7 +51,7 @@ while error == True:
 		fp=open(filename,'rb')
 		att = email.mime.application.MIMEApplication(fp.read(),_subtype="pdf")
 		fp.close()
-		att.add_header('Content-Disposition','attachment',filename=filename)
+		att.add_header('Content-Disposition','attachment',filename='cv')
 		msg.attach(att)
 		error = False
 	except:
@@ -81,6 +81,7 @@ try:
 		except:
 			#error
 			print 'failed sending the mail to : ' + email
+			del msg['To']
 	#close server
 	server.close()
 except:
